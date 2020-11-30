@@ -23,7 +23,8 @@ class RegControllerTest {
     @Autowired
     private MockMvc mockMvc;
     @Autowired
-    ObjectMapper objectMapper;
+    private ObjectMapper objectMapper;
+
     @Test
     @WithAnonymousUser
     public void shouldReturnUniqLoginAndPasswordWithRegistrationFalse() throws Exception {

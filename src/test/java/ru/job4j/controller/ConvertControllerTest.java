@@ -28,8 +28,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class ConvertControllerTest {
     @Autowired
     private MockMvc mockMvc;
+
     @Autowired
-    ObjectMapper objectMapper;
+    private ObjectMapper objectMapper;
 
     @Test
     @WithMockUser
@@ -44,7 +45,8 @@ class ConvertControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("code")
-                        .value("aHR0cHM6Ly9qb2I0ai5ydS9UcmFja1N0dWRpby90YXNrLzg5OTM_dGhpc2ZyYW1lPXRydWU="));
+                        .value("aHR0cHM6Ly9qb2I0ai5ydS9UcmF"
+                                + "ja1N0dWRpby90YXNrLzg5OTM_dGhpc2ZyYW1lPXRydWU="));
     }
 
     @Test
@@ -65,7 +67,8 @@ class ConvertControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
-                .andExpect(jsonPath("[0].url").value("https://job4j.ru/TrackStudio/task/8993?thisframe=true"))
+                .andExpect(jsonPath("[0].url")
+                        .value("https://job4j.ru/TrackStudio/task/8993?thisframe=true"))
                 .andExpect(jsonPath("[0].total").isNotEmpty());
     }
 }

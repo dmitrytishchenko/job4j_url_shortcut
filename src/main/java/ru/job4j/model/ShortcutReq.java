@@ -26,10 +26,10 @@ public class ShortcutReq {
 
     @Override
     public String toString() {
-        return "ShortcutReq{" +
-                "id=" + id +
-                ", url='" + url + '\'' +
-                '}';
+        return "ShortcutReq{"
+                + "id=" + id
+                + ", url='" + url + '\''
+                + '}';
     }
 
     public Long getId() {

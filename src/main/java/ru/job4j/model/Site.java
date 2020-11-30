@@ -18,11 +18,9 @@ public class Site {
     private String password;
     private String registration;
 
-
     public Site() {
         this.password = UUID.randomUUID().toString();
     }
-
 
     public String getLogin() {
         return login;
@@ -58,11 +56,11 @@ public class Site {
 
     @Override
     public String toString() {
-        return "Site{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", registration='" + registration + '\'' +
-                '}';
+        return "Site{"
+                + "id=" + id
+                + ", login='" + login + '\''
+                + ", password='" + password + '\''
+                + ", registration='" + registration + '\''
+                + '}';
     }
 }

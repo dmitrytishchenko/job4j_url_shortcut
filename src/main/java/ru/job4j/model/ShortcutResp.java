@@ -34,9 +34,9 @@ public class ShortcutResp {
 
     @Override
     public String toString() {
-        return "ShortcutResp{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                '}';
+        return "ShortcutResp{"
+                + "id=" + id
+                + ", code='" + code + '\''
+                + '}';
     }
 }

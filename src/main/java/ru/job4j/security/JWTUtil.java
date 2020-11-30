@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.function.Function;
 @Component
 public class JWTUtil {
-    private String SECRET_KEY = "secret";
+    private String secretKey = "secret";
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -28,7 +28,7 @@ public class JWTUtil {
     }
 
     private Claims extractAllClaims(String token) {
-        return Jwts.parser().setSigningKey(SECRET_KEY)
+        return Jwts.parser().setSigningKey(secretKey)
                 .parseClaimsJws(token)
                 .getBody();
     }
@@ -48,7 +48,7 @@ public class JWTUtil {
                 .setSubject(subject)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
-                .signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
+                .signWith(SignatureAlgorithm.HS256, secretKey).compact();
     }
 
     public boolean validateToken(String token, UserDetails userDetails) {

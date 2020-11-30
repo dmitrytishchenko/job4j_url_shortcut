@@ -20,8 +20,8 @@ public class Link {
 
     @Override
     public String toString() {
-        return "Link{" +
-                "siteName='" + site + '\'' +
-                '}';
+        return "Link{"
+                + "siteName='" + site + '\''
+                + '}';
     }
 }

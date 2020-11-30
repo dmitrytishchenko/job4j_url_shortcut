@@ -16,7 +16,8 @@ public class ShortcutService {
     private final ShortcutReqRepository repositoryReq;
     private final ShortcutRespRepository repositoryResp;
 
-    public ShortcutService(ShortcutReqRepository repositoryReq, ShortcutRespRepository repositoryResp) {
+    public ShortcutService(ShortcutReqRepository repositoryReq,
+                           ShortcutRespRepository repositoryResp) {
         this.repositoryReq = repositoryReq;
         this.repositoryResp = repositoryResp;
     }
