@@ -7,6 +7,7 @@ registration varchar(100)
 create table urls (
 id serial primary key,
 url varchar (100),
+total int,
 codes_id int not null unique references codes(id)
 );
 create table codes (

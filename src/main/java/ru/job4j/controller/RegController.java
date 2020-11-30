@@ -29,10 +29,10 @@ public class RegController {
             site = new Site();
             site.setLogin(link.getSite());
             site.setRegistration("true");
-            result = new ResponseEntity<Site>(site, HttpStatus.CREATED);
+            result = new ResponseEntity<Site>(site, HttpStatus.OK);
         } else {
             site.setRegistration("false");
-            result = new ResponseEntity<Site>(site, HttpStatus.BAD_REQUEST);
+            result = new ResponseEntity<Site>(site, HttpStatus.OK);
         }
         siteService.create(site);
         return result;

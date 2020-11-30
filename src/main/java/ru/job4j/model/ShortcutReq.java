@@ -12,6 +12,7 @@ public class ShortcutReq {
     @JsonIgnore
     private Long id;
     private String url;
+    private Long total;
     @JsonIgnore
     @OneToOne
     private ShortcutResp codes;
@@ -46,4 +47,13 @@ public class ShortcutReq {
     public void setUrl(String url) {
         this.url = url;
     }
+
+    public Long getTotal() {
+        return total;
+    }
+
+    public void setTotal(Long total) {
+        this.total = total;
+    }
+
 }
