@@ -34,7 +34,6 @@ public class ShortcutService {
         ShortcutResp shortcutResp = new ShortcutResp();
         shortcutResp.setCode(key);
         ShortcutReq req = new ShortcutReq(shortcutResp);
-        req.setTotal(0L);
         req.setUrl(shortcutReq.getUrl());
         repositoryResp.save(shortcutResp);
         repositoryReq.save(req);
@@ -53,9 +52,7 @@ public class ShortcutService {
         for (ShortcutReq req : repositoryReq.findAll()) {
             if (req.getId().equals(idByCode)) {
                 url = req.getUrl();
-                Long total = req.getTotal();
-                total++;
-                req.setTotal(total);
+                req.setTotal(req.incrementCounter());
                 repositoryReq.save(req);
             }
         }

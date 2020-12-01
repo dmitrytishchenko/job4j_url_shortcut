@@ -29,8 +29,8 @@ class AuthControllerTest {
     @WithAnonymousUser
     public void shouldLoginAndPasswordThenReturnJwt() throws Exception {
         Site site = new Site();
-        site.setLogin("test");
-        site.setPassword("9f0e6cd4-20f7-4a54-bfbc-4cc42f9c0cd0");
+        site.setLogin("job4j.ru");
+        site.setPassword("3918e7d2-c509-4672-9b58-3b20d92ed136");
         this.mockMvc.perform(post("/authenticate")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(site))

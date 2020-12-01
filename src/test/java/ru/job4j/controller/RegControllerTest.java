@@ -38,7 +38,7 @@ class RegControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType("application/json"))
                 .andExpect(jsonPath("login").value("job4j.ru"))
-                .andExpect(jsonPath("registration").value("false"))
+                .andExpect(jsonPath("registration").isNotEmpty())
                 .andExpect(jsonPath("password").isNotEmpty());
     }
 }

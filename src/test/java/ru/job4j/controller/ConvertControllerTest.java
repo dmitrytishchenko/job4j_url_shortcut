@@ -1,6 +1,5 @@
 package ru.job4j.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,14 +9,10 @@ import org.springframework.http.MediaType;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultMatcher;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import ru.job4j.MainSpring;
 import ru.job4j.model.ShortcutReq;
 
-import static org.hamcrest.CoreMatchers.containsString;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -37,7 +32,6 @@ class ConvertControllerTest {
     public void shouldConvertReturnCodeByUrl() throws Exception {
         ShortcutReq req = new ShortcutReq();
         req.setUrl("https://job4j.ru/TrackStudio/task/8993?thisframe=true");
-        req.setTotal(1L);
         this.mockMvc.perform(post("/convert")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(req))
@@ -45,8 +39,8 @@ class ConvertControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("code")
-                        .value("aHR0cHM6Ly9qb2I0ai5ydS9UcmF"
-                                + "ja1N0dWRpby90YXNrLzg5OTM_dGhpc2ZyYW1lPXRydWU="));
+                        .value("aHR0cHM6Ly9qb2I0ai5ydS9UcmFja"
+                                + "1N0dWRpby90YXNrLzg5OTM_dGhpc2ZyYW1lPXRydWU="));
     }
 
     @Test

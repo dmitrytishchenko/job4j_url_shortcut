@@ -3,6 +3,7 @@ package ru.job4j.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Entity
 @Table(name = "urls")
@@ -12,7 +13,10 @@ public class ShortcutReq {
     @JsonIgnore
     private Long id;
     private String url;
-    private Long total;
+    private Integer total;
+    @JsonIgnore
+    @Transient
+    private final AtomicInteger counter = new AtomicInteger(1);
     @JsonIgnore
     @OneToOne
     private ShortcutResp codes;
@@ -24,12 +28,16 @@ public class ShortcutReq {
         this.codes = codes;
     }
 
-    @Override
-    public String toString() {
-        return "ShortcutReq{"
-                + "id=" + id
-                + ", url='" + url + '\''
-                + '}';
+    public int incrementCounter() {
+        return counter.getAndIncrement();
+    }
+
+    public Integer getTotal() {
+        return total;
+    }
+
+    public void setTotal(Integer total) {
+        this.total = total;
     }
 
     public Long getId() {
@@ -48,12 +56,14 @@ public class ShortcutReq {
         this.url = url;
     }
 
-    public Long getTotal() {
-        return total;
+    @Override
+    public String toString() {
+        return "ShortcutReq{"
+                + "id=" + id
+                + ", url='" + url + '\''
+                + ", total=" + total
+                + ", counter=" + counter
+                + ", codes=" + codes
+                + '}';
     }
-
-    public void setTotal(Long total) {
-        this.total = total;
-    }
-
 }
