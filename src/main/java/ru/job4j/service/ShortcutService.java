@@ -51,9 +51,12 @@ public class ShortcutService {
         }
         for (ShortcutReq req : repositoryReq.findAll()) {
             if (req.getId().equals(idByCode)) {
-                url = req.getUrl();
-                req.setTotal(req.incrementCounter());
-                repositoryReq.save(req);
+                synchronized (this) {
+                    url = req.getUrl();
+                    int tot = req.getTotal();
+                    req.setTotal(++tot);
+                    repositoryReq.save(req);
+                }
             }
         }
         return url;

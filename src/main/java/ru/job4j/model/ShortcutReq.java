@@ -13,10 +13,7 @@ public class ShortcutReq {
     @JsonIgnore
     private Long id;
     private String url;
-    private Integer total;
-    @JsonIgnore
-    @Transient
-    private final AtomicInteger counter = new AtomicInteger(1);
+    private Integer total = 0;
     @JsonIgnore
     @OneToOne
     private ShortcutResp codes;
@@ -26,10 +23,6 @@ public class ShortcutReq {
 
     public ShortcutReq(ShortcutResp codes) {
         this.codes = codes;
-    }
-
-    public int incrementCounter() {
-        return counter.getAndIncrement();
     }
 
     public Integer getTotal() {
@@ -62,7 +55,6 @@ public class ShortcutReq {
                 + "id=" + id
                 + ", url='" + url + '\''
                 + ", total=" + total
-                + ", counter=" + counter
                 + ", codes=" + codes
                 + '}';
     }
