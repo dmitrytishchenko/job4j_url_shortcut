@@ -42,23 +42,14 @@ public class ShortcutService {
 
     public String getUrlByCode(String code) {
         long idByCode = 0;
-        String url = null;
+        String url;
         for (ShortcutResp resp : repositoryResp.findAll()) {
             if (resp.getCode().equals(code)) {
                 idByCode = resp.getId();
                 break;
             }
         }
-        for (ShortcutReq req : repositoryReq.findAll()) {
-            if (req.getId().equals(idByCode)) {
-                synchronized (this) {
-                    url = req.getUrl();
-                    int tot = req.getTotal();
-                    req.setTotal(++tot);
-                    repositoryReq.save(req);
-                }
-            }
-        }
+        url = repositoryReq.getUrlByIdAndIncrementTotal((int) idByCode);
         return url;
     }
 

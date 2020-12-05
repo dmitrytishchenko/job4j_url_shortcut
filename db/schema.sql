@@ -14,3 +14,9 @@ url varchar (100),
 total int,
 codes_id int not null unique references codes(id)
 );
+create function getUrlByIdAndIncrementTotal(in id int, out url varchar)
+language sql
+as $$
+update urls set  total = total + 1  where codes_id = id ;
+select url from urls where codes_id = id;
+  $$;
