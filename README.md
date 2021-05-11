@@ -50,4 +50,4 @@ _3. Статистика._
  - подключен элемент Jacoco - процент покрытия тестами.
  
 [![Build Status](https://travis-ci.org/dmitrytishchenko/job4j_url_shortcut.svg?branch=main)](https://travis-ci.org/dmitrytishchenko/job4j_url_shortcut)
-[![codecov](https://codecov.io/gh/dmitrytishchenko/job4j_url_shortcut/branch/main/graph/badge.svg?token=W0HGZEO49W)](https://codecov.io/gh/dmitrytishchenko/job4j_url_shortcut)
+[![codecov](https://codecov.io/gh/dmitrytishchenko/job4j_url_shortcut/branch/main/graph/badge.svg?CODECOV_TOKEN="6ad8f09b-412c-47ac-8905-993bc4a20f90")](https://codecov.io/gh/dmitrytishchenko/job4j_url_shortcut)
